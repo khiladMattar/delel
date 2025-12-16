@@ -1,4 +1,4 @@
-import 'package:daiel/core/utils/app_assets.dart';
+import 'package:daiel/core/utils/route/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,16 +10,9 @@ class Daiel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-    debugShowCheckedModeBanner: false,
-     title: "daiel",
-    home: Scaffold(
-      appBar: AppBar(
-        title: const Text("daiel"),
-      ),
-      body: Center(
-        child: Image.asset(Assets.assetsImagesOnBording1)
-      ),
-    ));
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: router
+      );
   }
 }
