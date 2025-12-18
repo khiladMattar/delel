@@ -22,11 +22,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
-          child: Column(
+          child: ListView(
+            physics: BouncingScrollPhysics(),
             children: [
               const SizedBox(height: 40),
               CustomNavBar(onTap: () {  },),
               OnBoardingWidgetBody(),
+               const SizedBox(height: 88),
                const CustomBtn(text: AppStrings.next,),
                const SizedBox(height: 17),
             ],

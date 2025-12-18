@@ -13,14 +13,27 @@ class OnBoardingWidgetBody extends StatelessWidget {
   final PageController _controller = PageController();
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 500,
       child: PageView.builder(
+      physics: BouncingScrollPhysics(),
         itemCount: 3,
         controller: _controller,
        itemBuilder: (BuildContext context, int index) { 
         return Column(
             children: [
-             Image.asset(Assets.assetsImagesOnBording1, ),
+              Container(
+              height: 290,
+              width: 343,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    onBoardingData[index].imagePath,
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
              const SizedBox(height: 24),
               CustomSmoothPageIndicator(controller: _controller),
               const SizedBox(height: 32),
