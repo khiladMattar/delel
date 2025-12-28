@@ -1,10 +1,9 @@
-import 'package:daiel/core/utils/app_string.dart';
-import 'package:daiel/core/widgets/custom_btn.dart';
+import 'package:daiel/core/funcation/navigation.dart';
+import 'package:daiel/features/on_boarding/presentation/views/functions/on_boarding.dart';
 import 'package:daiel/features/on_boarding/presentation/views/widgets/custom_nav_bar.dart';
+import 'package:daiel/features/on_boarding/presentation/views/widgets/get_buttons.dart';
 import 'package:daiel/features/on_boarding/presentation/views/widgets/on_boarding_widget_body.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/utils/app_text_style.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -18,6 +17,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -26,10 +26,19 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             physics: BouncingScrollPhysics(),
             children: [
               const SizedBox(height: 40),
-              CustomNavBar(onTap: () {  },),
-              OnBoardingWidgetBody(),
-               const SizedBox(height: 88),
-               const CustomBtn(text: AppStrings.next,),
+              CustomNavBar(onTap: () {
+                onBoardingVisited() ;
+                customNavigate(context, path: "/singUP") ; 
+                },),
+              OnBoardingWidgetBody(controller: _controller, 
+              onPageChanged: (index) {
+                setState(() {
+                   currentIndex = index;
+                });
+                 
+                }),
+               const SizedBox(height: 40),
+              CurrentIndex(controller: _controller, currentIndex: currentIndex),
                const SizedBox(height: 17),
             ],
           ),
@@ -38,3 +47,5 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 }
+
+  

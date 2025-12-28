@@ -1,8 +1,13 @@
+import 'package:daiel/core/cashe/cashe_helper.dart';
+import 'package:daiel/core/services/service_locator.dart';
 import 'package:daiel/core/utils/app_colors.dart';
 import 'package:daiel/core/utils/route/app_router.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
+  await getIt<CacheHelper>().init();
   runApp(const Daiel());
 }
 

@@ -1,28 +1,28 @@
-import 'package:daiel/core/utils/app_assets.dart';
-import 'package:daiel/core/utils/app_string.dart';
+
 import 'package:daiel/core/utils/app_text_style.dart';
 import 'package:daiel/features/on_boarding/data/models/on_boarding_model.dart';
 import 'package:daiel/features/on_boarding/presentation/views/widgets/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingWidgetBody extends StatelessWidget {
-     OnBoardingWidgetBody({super.key,});
+     OnBoardingWidgetBody({super.key, required this.controller, this.onPageChanged,});
   // const OnBoardingWidgetBody({super.key, required this.controller, this.onPageChanged});
-  // final PageController controller;
-  // final Function(int)? onPageChanged;
-  final PageController _controller = PageController();
+    final PageController controller;
+   final Function(int)? onPageChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 500,
       child: PageView.builder(
+        onPageChanged: onPageChanged,
       physics: BouncingScrollPhysics(),
         itemCount: 3,
-        controller: _controller,
+        controller: controller,
        itemBuilder: (BuildContext context, int index) { 
-        return Column(
+        return  Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+             Container(
               height: 290,
               width: 343,
               decoration: BoxDecoration(
@@ -35,8 +35,8 @@ class OnBoardingWidgetBody extends StatelessWidget {
               ),
             ),
              const SizedBox(height: 24),
-              CustomSmoothPageIndicator(controller: _controller),
-              const SizedBox(height: 32),
+              CustomSmoothPageIndicator(controller: controller),
+              const SizedBox(height: 22),
               Text(
                 onBoardingData[index].title,
                 style: CustomTextStyles.poppins500style24 .copyWith(fontWeight: FontWeight.bold,fontSize: 20),

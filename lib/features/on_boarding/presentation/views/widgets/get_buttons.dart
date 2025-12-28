@@ -51,3 +51,46 @@
 //     }
 //   }
 // }
+import 'package:daiel/core/funcation/navigation.dart';
+import 'package:daiel/core/utils/app_string.dart';
+import 'package:daiel/core/utils/app_text_style.dart';
+import 'package:daiel/core/widgets/custom_btn.dart';
+import 'package:daiel/features/on_boarding/data/models/on_boarding_model.dart';
+import 'package:daiel/features/on_boarding/presentation/views/functions/on_boarding.dart';
+import 'package:flutter/material.dart';
+
+class CurrentIndex extends StatelessWidget {
+  const CurrentIndex({super.key,required this.controller,required this.currentIndex});
+  final int currentIndex;
+  final PageController controller ;
+
+  @override
+  Widget build(BuildContext context) {
+    return   currentIndex == onBoardingData.length -1 ?
+                Column(
+                  children: [
+                    CustomBtn(text: AppStrings.createAccount, 
+                     onPressed: (){ 
+                      onBoardingVisited();
+                      customReplacementNavigate(context, path: "/singUP");
+                     
+                                   },
+                                   ),
+                    const SizedBox(height: 16),
+                    InkWell(
+                      onTap: () {
+                        onBoardingVisited();
+                        
+                        customReplacementNavigate(context, path: "/singIn");
+                      },
+                      child: Text(AppStrings.loginNow,style: CustomTextStyles.poppins300style16.copyWith(fontWeight: FontWeight.w400),))
+         
+                  ],
+                ):
+                CustomBtn(text: AppStrings.next, 
+               onPressed: (){
+                controller.nextPage(duration: Duration(microseconds: 200), curve: Curves.bounceIn);
+               },
+               );
+  }
+}
