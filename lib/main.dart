@@ -18,7 +18,11 @@ class Daiel extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.offWhite
+        primaryColor: AppColors.primaryColor,
+        scaffoldBackgroundColor: AppColors.offWhite,
+        textSelectionTheme: TextSelectionThemeData(
+      cursorColor:AppColors.grey,
+    ),
       ),
       debugShowCheckedModeBanner: false,
       routerConfig: router
