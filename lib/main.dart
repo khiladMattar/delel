@@ -2,10 +2,16 @@ import 'package:daiel/core/cashe/cashe_helper.dart';
 import 'package:daiel/core/services/service_locator.dart';
 import 'package:daiel/core/utils/app_colors.dart';
 import 'package:daiel/core/utils/route/app_router.dart';
+import 'package:daiel/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   setupServiceLocator();
   await getIt<CacheHelper>().init();
   runApp(const Daiel());

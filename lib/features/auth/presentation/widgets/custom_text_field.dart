@@ -8,7 +8,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     this.onChanged,
     this.onFieldSubmitted,
-    this.obscureText, this.suffixIcon,
+    this.obscureText,
+    this.suffixIcon,
   });
   final String labelText;
   final Function(String)? onChanged;
@@ -31,10 +32,10 @@ class CustomTextFormField extends StatelessWidget {
         onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,
         obscureText: obscureText ?? false,
-     
-        decoration: InputDecoration(
-                      isDense: true, // يقلل الارتفاع
 
+        decoration: InputDecoration(
+          isDense: true, // يقلل الارتفاع
+          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
           labelText: labelText,
           labelStyle: CustomTextStyles.poppins500style18.copyWith(fontSize: 14),
           suffixIcon: suffixIcon,
@@ -49,6 +50,7 @@ class CustomTextFormField extends StatelessWidget {
 
 OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4),
-      borderSide: BorderSide(color: AppColors.grey));
+    borderRadius: BorderRadius.circular(4),
+    borderSide: BorderSide(color: AppColors.grey),
+  );
 }
