@@ -1,6 +1,7 @@
 import 'package:daiel/core/utils/app_string.dart';
 import 'package:daiel/core/utils/app_text_style.dart';
 import 'package:daiel/core/widgets/custom_btn.dart';
+import 'package:daiel/features/auth/presentation/widgets/custom_sign_up_form.dart';
 import 'package:daiel/features/auth/presentation/widgets/custom_text_field.dart';
 import 'package:daiel/features/auth/presentation/widgets/have_an_account_widget.dart';
 import 'package:daiel/features/auth/presentation/widgets/terms_and_condition_widget.dart';
@@ -20,23 +21,10 @@ class SingupView extends StatelessWidget {
             SliverToBoxAdapter( child: SizedBox(height: 152,),),
             SliverToBoxAdapter(child: WelcomeTextWidget(text: AppStrings.welcome),),
             SliverToBoxAdapter( child: SizedBox(height: 16,),),
-            SliverToBoxAdapter(child: CustomTextFormField(labelText: AppStrings.fristName),),
-            SliverToBoxAdapter(child: CustomTextFormField(labelText: AppStrings.lastName),),
-            SliverToBoxAdapter(child: CustomTextFormField(labelText: AppStrings.emailAddress),),
-            SliverToBoxAdapter(child: CustomTextFormField(labelText: AppStrings.password,obscureText: true,suffixIcon: Icon(Icons.visibility_off),),),
-            SliverToBoxAdapter(child: TermsAndConditionWidget(),),
-            SliverToBoxAdapter( child: SizedBox(height: 88,),),
-            SliverToBoxAdapter(child: CustomBtn(text: AppStrings.signUp,),),
+            SliverToBoxAdapter(child: CustomSignUpForm()),
             SliverToBoxAdapter( child: SizedBox(height: 16,),),
             SliverToBoxAdapter(child: HaveAnAccountWidget(text1: AppStrings.alreadyHaveAnAccount, text2: AppStrings.signIn,),),
 
-            
-
-            
-
-            
-        
-        
         
               ],
         ),
