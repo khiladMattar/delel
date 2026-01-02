@@ -24,8 +24,8 @@ class SingupView extends StatelessWidget {
             SliverToBoxAdapter(child: CustomSignUpForm()),
             SliverToBoxAdapter( child: SizedBox(height: 16,),),
             SliverToBoxAdapter(child: HaveAnAccountWidget(text1: AppStrings.alreadyHaveAnAccount, text2: AppStrings.signIn,),),
+            SliverToBoxAdapter( child: SizedBox(height: 16,),),
 
-        
               ],
         ),
       ),

@@ -2,18 +2,21 @@
 // ignore: depend_on_referenced_packages
 import 'package:daiel/features/auth/presentation/auth_cubit/cubit/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  late String?fristName;
-  late String? lastName;
-  late String? emailAddress;
-  late String ?password;
+   String?fristName;
+   String? lastName;
+   String? emailAddress;
+   String ?password;
+   GlobalKey<FormState> signUpFormKey=GlobalKey();
+   bool? isCheckedTramesAndCondation=false;
   signUpwithEmailAndPassword() async {
     try {
       emit(SignupLoadingState());
-  final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
     email: emailAddress!,
     password: password!,
   );
@@ -27,5 +30,9 @@ class AuthCubit extends Cubit<AuthState> {
 } catch (e) {
   emit(SignupFailureState(errMessage: e.toString()));
 }
+  }
+  changeTermsAndConditionCheckBox({required bool newValue}) {
+    isCheckedTramesAndCondation = newValue;
+    emit(TermsAndConditionUpdateState());
   }
 }

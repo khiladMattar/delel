@@ -8,8 +8,8 @@ final class SignupSuccessState extends AuthState {}
 
 final class SignupFailureState extends AuthState {
   final String errMessage;
-
   SignupFailureState({required this.errMessage});
+  
 }
 
 final class SigninLoadingState extends AuthState {}
