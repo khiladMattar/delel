@@ -72,7 +72,7 @@ class CurrentIndex extends StatelessWidget {
                     CustomBtn(text: AppStrings.createAccount, 
                      onPressed: (){ 
                       onBoardingVisited();
-                      customReplacementNavigate(context, path: "/singUP");
+                      customReplacementNavigate(context, "/singUP");
                      
                                    },
                                    ),
@@ -81,7 +81,7 @@ class CurrentIndex extends StatelessWidget {
                       onTap: () {
                         onBoardingVisited();
                         
-                        customReplacementNavigate(context, path: "/singIn");
+                        customReplacementNavigate(context,  "/singIn");
                       },
                       child: Text(AppStrings.loginNow,style: CustomTextStyles.poppins300style16.copyWith(fontWeight: FontWeight.w400),))
          

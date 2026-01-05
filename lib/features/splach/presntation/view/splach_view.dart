@@ -39,7 +39,7 @@ class _SplachViewState extends State<SplachView> {
 }
  void DelagedNavigation(context,Path) {
      Future.delayed(const Duration(seconds: 3), () {
-      customReplacementNavigate(context, path: Path);
+      customReplacementNavigate(context, Path);
       
     });
   }

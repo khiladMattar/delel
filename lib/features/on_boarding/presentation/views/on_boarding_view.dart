@@ -28,7 +28,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               const SizedBox(height: 40),
               CustomNavBar(onTap: () {
                 onBoardingVisited() ;
-                customNavigate(context, path: "/singUP") ; 
+                customNavigate(context, "/singUP") ; 
                 },),
               OnBoardingWidgetBody(controller: _controller, 
               onPageChanged: (index) {

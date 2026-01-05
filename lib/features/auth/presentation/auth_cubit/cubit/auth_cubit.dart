@@ -11,11 +11,12 @@ class AuthCubit extends Cubit<AuthState> {
    String? lastName;
    String? emailAddress;
    String ?password;
+   bool isvasspiblePassword=true;
    GlobalKey<FormState> signUpFormKey=GlobalKey();
    bool? isCheckedTramesAndCondation=false;
   signUpwithEmailAndPassword() async {
     try {
-      emit(SignupLoadingState());
+    emit(SignupLoadingState());
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
     email: emailAddress!,
     password: password!,
@@ -34,5 +35,9 @@ class AuthCubit extends Cubit<AuthState> {
   changeTermsAndConditionCheckBox({required bool newValue}) {
     isCheckedTramesAndCondation = newValue;
     emit(TermsAndConditionUpdateState());
+  }
+  changeVasoilePassword() {
+    isvasspiblePassword = !isvasspiblePassword;
+    emit(ObscurePasswordTextUpdateState());
   }
 }

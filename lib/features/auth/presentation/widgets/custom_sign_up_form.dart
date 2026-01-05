@@ -1,3 +1,5 @@
+import 'package:daiel/core/funcation/custom_toast.dart';
+import 'package:daiel/core/funcation/navigation.dart';
 import 'package:daiel/core/utils/app_colors.dart';
 import 'package:daiel/core/utils/app_string.dart';
 import 'package:daiel/core/widgets/custom_btn.dart';
@@ -9,18 +11,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class CustomSignUpForm extends StatelessWidget {
+class CustomSignUpForm extends StatefulWidget {
   const CustomSignUpForm({super.key});
 
+  @override
+  State<CustomSignUpForm> createState() => _CustomSignUpFormState();
+}
+
+class _CustomSignUpFormState extends State<CustomSignUpForm> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignupSuccessState) {
-          // showToast("Successfully,Check your email to verfiy your account");
-          // customReplacementNavigate(context, "/signIn");
+          showToast("Successfully,Check your email to verfiy your account");
+          customReplacementNavigate(context, "/signIn");
         } else if (state is SignupFailureState) {
-          // showToast(state.errMessage);
+          showToast(state.errMessage);
         }
       },
       builder: (context, state) {
@@ -38,12 +45,19 @@ class CustomSignUpForm extends StatelessWidget {
           CustomTextFormField(labelText: AppStrings.emailAddress,onChanged: (email){
               authCubit.emailAddress=email;
           },),
-          CustomTextFormField(labelText: AppStrings.password,obscureText: true,suffixIcon: Icon(Icons.visibility_off),
+          CustomTextFormField(labelText: AppStrings.password,obscureText: authCubit.isvasspiblePassword,
+          
+          suffixIcon:IconButton(onPressed:(){
+             setState(() {
+               authCubit.changeVasoilePassword();
+             });
+          } , icon: Icon(Icons.visibility_off)),
           onChanged: (password){
               authCubit.password=password;
           },),
           const TermsAndConditionWidget(),
           const SizedBox(height: 88,),
+          state is SignupLoadingState? CircularProgressIndicator(color: AppColors.primaryColor,):
           CustomBtn(color: !authCubit.isCheckedTramesAndCondation! ? AppColors.grey : null, 
           text: AppStrings.signUp,onPressed: () { 
             authCubit.isCheckedTramesAndCondation!?
@@ -53,6 +67,7 @@ class CustomSignUpForm extends StatelessWidget {
               }
             }
             :{
+              showToast("Please agree to the terms and conditions")
               //  Fluttertoast.showToast(msg:"Please agree to the terms and conditions",
               //  toastLength: Toast.LENGTH_SHORT,
               //    gravity: ToastGravity.BOTTOM,)
