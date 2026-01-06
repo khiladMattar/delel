@@ -2,6 +2,7 @@ import 'package:daiel/core/cashe/cashe_helper.dart';
 import 'package:daiel/core/funcation/navigation.dart';
 import 'package:daiel/core/services/service_locator.dart';
 import 'package:daiel/core/utils/app_text_style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,10 +20,12 @@ class _SplachViewState extends State<SplachView> {
      bool isOnBoardingVisisted =
        getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
     if (isOnBoardingVisisted == true) {
-          DelagedNavigation(context, "/singUP");
+        FirebaseAuth.instance.currentUser == null
+          ? delayedNavigate(context, "/singUP"):
+          delayedNavigate(context, "/home");
 
     } else {
-     DelagedNavigation(context, "/OnBoarding");
+     delayedNavigate(context, "/OnBoarding");
     }
     super.initState();
    // DelagedNavigation(context);
@@ -37,7 +40,7 @@ class _SplachViewState extends State<SplachView> {
     );
   }
 }
- void DelagedNavigation(context,Path) {
+ void delayedNavigate(context,Path) {
      Future.delayed(const Duration(seconds: 3), () {
       customReplacementNavigate(context, Path);
       

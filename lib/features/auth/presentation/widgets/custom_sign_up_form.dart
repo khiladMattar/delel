@@ -25,7 +25,7 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
       listener: (context, state) {
         if (state is SignupSuccessState) {
           showToast("Successfully,Check your email to verfiy your account");
-          customReplacementNavigate(context, "/signIn");
+          customReplacementNavigate(context, "/home");
         } else if (state is SignupFailureState) {
           showToast(state.errMessage);
         }
@@ -42,7 +42,7 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
           CustomTextFormField(labelText: AppStrings.lastName,onChanged: (lastname){
               authCubit.lastName=lastname;
           },),
-          CustomTextFormField(labelText: AppStrings.emailAddress,onChanged: (email){
+          CustomTextFormField(labelText: AppStrings.emailAddress,isEmail: true,onChanged: (email){
               authCubit.emailAddress=email;
           },),
           CustomTextFormField(labelText: AppStrings.password,obscureText: authCubit.isvasspiblePassword,
