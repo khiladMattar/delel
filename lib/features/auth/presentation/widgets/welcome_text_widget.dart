@@ -12,7 +12,7 @@ class WelcomeTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child: Text(text,style: CustomTextStyles.poppins600style28,));
+      child: Text(text,style: CustomTextStyles.poppins600style24,));
     
   }
 }

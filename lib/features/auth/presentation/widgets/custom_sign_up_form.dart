@@ -51,7 +51,7 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
              setState(() {
                authCubit.changeVasoilePassword();
              });
-          } , icon: Icon(Icons.visibility_off)),
+          } , icon: Icon(!authCubit.isvasspiblePassword ? Icons.visibility_off : Icons.visibility)),
           onChanged: (password){
               authCubit.password=password;
           },),

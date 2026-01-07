@@ -13,6 +13,8 @@ class AuthCubit extends Cubit<AuthState> {
    String ?password;
    bool isvasspiblePassword=true;
    GlobalKey<FormState> signUpFormKey=GlobalKey();
+      GlobalKey<FormState> signinFormKey=GlobalKey();
+
    bool? isCheckedTramesAndCondation=false;
   signUpwithEmailAndPassword() async {
     try {
@@ -30,7 +32,10 @@ class AuthCubit extends Cubit<AuthState> {
   } else if (e.code == 'email-already-in-use') {
     emit(SignupFailureState(errMessage: 'The account already exists for that email.'));
      print('ccccc');
-  }
+  }else {
+        emit(SignupFailureState(errMessage: 'Check your Information!'));
+         print('bbbbb');
+      }
 } catch (e) {
   emit(SignupFailureState(errMessage: e.toString()));
   print('kkkkkk');
@@ -43,5 +48,31 @@ class AuthCubit extends Cubit<AuthState> {
   changeVasoilePassword() {
     isvasspiblePassword = !isvasspiblePassword;
     emit(ObscurePasswordTextUpdateState());
+  }
+
+ Future<void> sigInWithEmailAndPassword() async {
+    try {
+      emit(SigninLoadingState());
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
+      );
+      emit(SigninSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SigninFailureState(errMessage: 'No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        emit(SigninFailureState(
+            errMessage: 'Wrong password provided for that user.'));
+      } else {
+        emit(SigninFailureState(errMessage: 'Check your Email and password!'));
+      }
+    } catch (e) {
+      emit(
+        SigninFailureState(
+          errMessage: e.toString(),
+        ),
+      );
+    }
   }
 }
