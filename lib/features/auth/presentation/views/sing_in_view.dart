@@ -24,6 +24,7 @@ class SingInView extends StatelessWidget {
               onTap: (){
                  customReplacementNavigate(context, "/singUP");            }
               ),),
+              
             SliverToBoxAdapter( child: SizedBox(height: 16,),),
 
             ],

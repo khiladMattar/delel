@@ -7,6 +7,7 @@ import 'package:daiel/core/widgets/custom_btn.dart' show CustomBtn;
 import 'package:daiel/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
 import 'package:daiel/features/auth/presentation/auth_cubit/cubit/auth_state.dart';
 import 'package:daiel/features/auth/presentation/widgets/custom_text_field.dart' show CustomTextFormField;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +24,9 @@ class _CustomSignInFormState extends State<CustomSignInForm> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SigninSuccessState) {
-          showToast("Successfully,Welcome back!");
-          customReplacementNavigate(context, "/home");
+            FirebaseAuth.instance.currentUser!.emailVerified
+              ? customReplacementNavigate(context, "/home")
+              : showToast("Please Verify Your Account");
         } else if (state is SigninFailureState) {
           showToast(state.errMessage);
         }
@@ -50,9 +52,14 @@ class _CustomSignInFormState extends State<CustomSignInForm> {
           onChanged: (password){ authCubit.password = password;},
           ),
           SizedBox(height: 16,),
-           Align(
-            alignment: Alignment.centerRight,
-            child: Text(AppStrings.forgotPassword,style: CustomTextStyles.poppins400style12,)),
+           InkWell(
+            onTap: () {
+              customNavigate(context, "/forgotPassword");
+            },
+             child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(AppStrings.forgotPassword,style: CustomTextStyles.poppins400style12,)),
+           ),
                    SizedBox(height: 102,),
 
          state is SigninLoadingState

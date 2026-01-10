@@ -23,7 +23,7 @@ class SingupView extends StatelessWidget {
             SliverToBoxAdapter(child: HaveAnAccountWidget(
               text1: AppStrings.alreadyHaveAnAccount, text2: AppStrings.signIn,
               onTap: (){
-                 customReplacementNavigate(context, "/signIn");            }
+                 customReplacementNavigate(context, "/singIn");            }
               ),),
             SliverToBoxAdapter( child: SizedBox(height: 16,),),
 

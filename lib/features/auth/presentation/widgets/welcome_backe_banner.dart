@@ -23,9 +23,10 @@ class WelcomeBanner extends StatelessWidget {
           style: CustomTextStyles.saira700style32,
           
           )),
-          SizedBox(height: 18,),
+         // SizedBox(height: 18,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
             SvgPicture.asset(Assets.assetsImagesVector1),
             SvgPicture.asset(Assets.assetsImagesVector2),

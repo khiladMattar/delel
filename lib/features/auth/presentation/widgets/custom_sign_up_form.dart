@@ -25,7 +25,7 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
       listener: (context, state) {
         if (state is SignupSuccessState) {
           showToast("Successfully,Check your email to verfiy your account");
-          customReplacementNavigate(context, "/home");
+          customReplacementNavigate(context, "/singIn");
         } else if (state is SignupFailureState) {
           showToast(state.errMessage);
         }
