@@ -38,7 +38,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                  
                 }),
                const SizedBox(height: 40),
-              CurrentIndex(controller: _controller, currentIndex: currentIndex),
+               CurrentIndex(controller: _controller, currentIndex: currentIndex),
                const SizedBox(height: 17),
             ],
           ),

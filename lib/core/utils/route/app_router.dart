@@ -3,6 +3,7 @@ import 'package:daiel/features/auth/presentation/views/forgot_password_view.dart
 import 'package:daiel/features/auth/presentation/views/sing_in_view.dart';
 import 'package:daiel/features/auth/presentation/views/sing_up_view.dart';
 import 'package:daiel/features/home/presentaion/views/home_view.dart';
+import 'package:daiel/features/home/presentaion/widgetsold/home_nav_bar_widget.dart';
 import 'package:daiel/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:daiel/features/splach/presntation/view/splach_view.dart';
 import 'package:flutter/src/widgets/async.dart';
@@ -36,6 +37,10 @@ final GoRouter router = GoRouter(
      GoRoute(
       path: "/home",
       builder: (context, state) => const HomeView(),
+    ),
+     GoRoute(
+      path: "/homeNavBar",
+      builder: (context, state) => const HomeNavBarWidget(),
     ),
     GoRoute(
       path: "/forgotPassword",

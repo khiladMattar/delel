@@ -57,6 +57,7 @@ class CustomTextFormField extends StatelessWidget {
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),
+          
         ),
       ),
     );

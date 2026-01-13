@@ -59,11 +59,12 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
           const SizedBox(height: 88,),
           state is SignupLoadingState? CircularProgressIndicator(color: AppColors.primaryColor,):
           CustomBtn(color: !authCubit.isCheckedTramesAndCondation! ? AppColors.grey : null, 
-          text: AppStrings.signUp,onPressed: () { 
+          text: AppStrings.signUp,onPressed: () async{ 
             authCubit.isCheckedTramesAndCondation!?
             {
               if (authCubit.signUpFormKey.currentState!.validate()) {
-                authCubit.signUpwithEmailAndPassword(),
+               await authCubit.signUpwithEmailAndPassword(),
+               
               }
             }
             :{

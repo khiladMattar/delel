@@ -23,7 +23,7 @@ class _SplachViewState extends State<SplachView> {
         FirebaseAuth.instance.currentUser == null
           ? delayedNavigate(context, "/singIn"):
           FirebaseAuth.instance.currentUser!.emailVerified?
-          delayedNavigate(context, "/home"):delayedNavigate(context, "/singIn");
+          delayedNavigate(context, "/homeNavBar"):delayedNavigate(context, "/singIn");
 
     } else {
      delayedNavigate(context, "/OnBoarding");

@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
    
 
 
-     addUserProfile()async {
+  Future<void> addUserProfile()async {
       CollectionReference users = FirebaseFirestore.instance.collection('users');
 
       // Call the user's CollectionReference to add a new user
@@ -33,7 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
           });
     }
 
-  signUpwithEmailAndPassword() async {
+ Future<void> signUpwithEmailAndPassword() async {
     try {
     emit(SignupLoadingState());
     print('xxxxxx');
@@ -66,7 +66,7 @@ class AuthCubit extends Cubit<AuthState> {
     isCheckedTramesAndCondation = newValue;
     emit(TermsAndConditionUpdateState());
   }
-  changeVasoilePassword() {
+ void changeVasoilePassword() {
     isvasspiblePassword = !isvasspiblePassword;
     emit(ObscurePasswordTextUpdateState());
   }
@@ -96,11 +96,11 @@ class AuthCubit extends Cubit<AuthState> {
       );
     }
   }
-    emailVerified() async {
+   Future<void> emailVerified() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
 
   }
-  resetPasswordWithLink() async {
+ Future<void> resetPasswordWithLink() async {
     try {
       emit(ResetPasswordLoadingState());
       await FirebaseAuth.instance.sendPasswordResetEmail(

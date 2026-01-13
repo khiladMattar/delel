@@ -63,9 +63,9 @@ abstract class CustomTextStyles {
     fontFamily: "Pacifico",
   );
   static const saira700style32 = TextStyle(
-    fontSize: 32,
+    fontSize: 42,
     fontWeight: FontWeight.bold,
     color: Colors.white,
-    fontFamily: "Saira",
+    fontFamily: "Pacifico",
   );
 }
