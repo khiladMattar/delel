@@ -9,61 +9,61 @@ abstract class CustomTextStyles {
     fontFamily: "Pacifico",
   );
   static final poppins600style28 = TextStyle(
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: FontWeight.w600,
     color: AppColors.black,
     fontFamily: "Poppins",
   );
   static final poppins600style24 = TextStyle(
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: FontWeight.w600,
     color: AppColors.black,
     fontFamily: "Poppins",
   );
   static final poppins400style12 = TextStyle(
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: FontWeight.w400,
     color: AppColors.deepGrey,
     fontFamily: "Poppins",
   );
   static final poppins500style18 = TextStyle(
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
     color: AppColors.grey,
     fontFamily: "Poppins",
   );
   static const poppins500style24 = TextStyle(
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: FontWeight.w500,
     color: Colors.black,
     fontFamily: "Poppins",
   );
   static final poppins500style14 = TextStyle(
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: FontWeight.w500,
     color: AppColors.deepBrown,
     fontFamily: "Poppins",
   );
   static const poppins300style16 = TextStyle(
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: FontWeight.w300,
     color: Colors.black,
     fontFamily: "Poppins",
   );
   static final poppins400style20 = TextStyle(
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: FontWeight.w400,
     color: AppColors.deepBrown,
     fontFamily: "Poppins",
   );
   static const pacifico700style32 = TextStyle(
-    fontSize: 42,
+    fontSize: 40,
     fontWeight: FontWeight.bold,
     color: Colors.white,
     fontFamily: "Pacifico",
   );
   static const saira700style32 = TextStyle(
-    fontSize: 42,
+    fontSize: 40,
     fontWeight: FontWeight.bold,
     color: Colors.white,
     fontFamily: "Pacifico",

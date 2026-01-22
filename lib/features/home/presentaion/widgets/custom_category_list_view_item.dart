@@ -38,7 +38,7 @@ class CustomCategoryListViewItem extends StatelessWidget {
           const SizedBox(height: 11),
           Text(
             "Lionheart",
-            style: CustomTextStyles.poppins500style14,
+            style: CustomTextStyles.poppins500style14.copyWith(fontSize: 10),
           )
         ],
       ),
