@@ -2,6 +2,7 @@
 import 'package:daiel/core/utils/app_assets.dart';
 import 'package:daiel/core/utils/app_colors.dart';
 import 'package:daiel/features/cart/presentation/view/cart_view.dart';
+import 'package:daiel/features/home/presentaion/views/home_view.dart';
 import 'package:daiel/features/profile/presentation/view/profile_view.dart';
 import 'package:daiel/features/search/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
@@ -29,13 +30,10 @@ class HomeNavBarWidget extends StatelessWidget {
     );
   }
 }
-
 List<Widget> _buildScreens() {
   return [
-    // BlocProvider(
-    //   create: (context) => HomeCubit()..getHistoricalPeridos(),
-    //   child: const HomeView(),
-    // ),
+    
+    const HomeView(),
     const CartView(),
     const SearchView(),
     const ProfileView(),
