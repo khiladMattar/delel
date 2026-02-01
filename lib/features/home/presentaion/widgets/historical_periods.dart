@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daiel/core/models/data_model.dart';
 import 'package:daiel/core/utils/app_colors.dart';
 import 'package:daiel/core/utils/app_text_style.dart';
+import 'package:daiel/core/widgets/custom_data_list_view.dart';
 import 'package:daiel/core/widgets/custom_shimmer_category.dart';
-import 'package:daiel/features/home/data/models/historical_periods_model.dart';
 import 'package:daiel/features/home/presentaion/cubit/home_cubit.dart';
 import 'package:daiel/features/home/presentaion/cubit/home_state.dart';
 import 'package:flutter/material.dart';
@@ -26,27 +26,7 @@ class HistoricalPeriods extends StatelessWidget {
         builder: (context, state) {
           return state is GetHistoricalPeriodsLoading
               ?  CustomShimmerCategory()
-              : SizedBox(
-                  height: 96,
-                  child: ListView.separated(
-                    clipBehavior: Clip.antiAlias,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return HistoricalPeriodItem(
-                        historicalPeriodsModel: context
-                            .read<HomeCubit>()
-                            .historicalPeriods[index],
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const SizedBox(width: 10);
-                    },
-                    itemCount: context
-                        .read<HomeCubit>()
-                        .historicalPeriods
-                        .length,
-                  ),
-                );
+              : CustomDataListView(dataList: context.read<HomeCubit>().historicalPeriods,);
           // return FutureBuilder<QuerySnapshot>(
           //   future: FirebaseFirestore.instance.collection('historical_periods').get(),
           //   builder: (context, snapshot) {
@@ -93,61 +73,5 @@ class HistoricalPeriods extends StatelessWidget {
   }
 }
 
-class HistoricalPeriodItem extends StatelessWidget {
-  const HistoricalPeriodItem({super.key, required this.historicalPeriodsModel});
-  // final String periodName = "Ancient Egypt";
-  // final String imagePath = Assets.imagesFrame;
 
-  final HistoricalPeriodsModel historicalPeriodsModel;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 164,
-      height: 96,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.grey,
-            blurRadius: 10,
-            offset: const Offset(0, 7), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SizedBox(
-            width: 70,
-            height: 48,
-            child: Text(
-              historicalPeriodsModel.name,
-              style: CustomTextStyles.poppins500style18.copyWith(
-                fontSize: 12,
-                color: AppColors.deepBrown,
-              ),
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          Container(
-            width: 64,
-            height: 47,
-            color: Colors.white,
-            child: CachedNetworkImage(
-              imageUrl: historicalPeriodsModel.image,
-              placeholder: (context, url) => Shimmer.fromColors(
-                child: Container(width: 22, height: 64),
-                baseColor: AppColors.grey,
-                highlightColor: Colors.white,
-              ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+
