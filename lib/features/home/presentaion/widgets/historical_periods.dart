@@ -1,14 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daiel/core/models/data_model.dart';
-import 'package:daiel/core/utils/app_colors.dart';
-import 'package:daiel/core/utils/app_text_style.dart';
+
 import 'package:daiel/core/widgets/custom_data_list_view.dart';
 import 'package:daiel/core/widgets/custom_shimmer_category.dart';
 import 'package:daiel/features/home/presentaion/cubit/home_cubit.dart';
 import 'package:daiel/features/home/presentaion/cubit/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HistoricalPeriods extends StatelessWidget {
   const HistoricalPeriods({super.key});
@@ -26,7 +22,7 @@ class HistoricalPeriods extends StatelessWidget {
         builder: (context, state) {
           return state is GetHistoricalPeriodsLoading
               ?  CustomShimmerCategory()
-              : CustomDataListView(dataList: context.read<HomeCubit>().historicalPeriods,);
+              : CustomDataListView(dataList: context.read<HomeCubit>().historicalPeriods,routePath:"/historicalPeriodsDetailsView" ,);
           // return FutureBuilder<QuerySnapshot>(
           //   future: FirebaseFirestore.instance.collection('historical_periods').get(),
           //   builder: (context, snapshot) {

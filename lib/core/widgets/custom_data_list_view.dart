@@ -7,8 +7,10 @@ class CustomDataListView extends StatelessWidget {
    CustomDataListView({
     super.key,
     required this.dataList
+, required this.routePath
   });
   final List<DataModel> dataList;
+  final String routePath;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -18,7 +20,8 @@ class CustomDataListView extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return CustomDataListViewItem(
-              dataModel: dataList[index],
+              model: dataList[index],
+              routePath: routePath,
             );
           },
           separatorBuilder: (BuildContext context, int index) {

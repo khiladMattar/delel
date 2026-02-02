@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daiel/core/utils/app_assets.dart';
 import 'package:daiel/core/utils/app_colors.dart';
 import 'package:daiel/core/utils/app_string.dart';
@@ -43,16 +44,16 @@ class PeriodDetailsSection extends StatelessWidget {
                       maxLines: 10,
                       overflow: TextOverflow.ellipsis,
                       style: CustomTextStyles.poppins500style18
-                          .copyWith(color: AppColors.black),
+                          .copyWith(color: AppColors.black,fontSize: 12),
                     )),
               ],
             ),
             const SizedBox(width: 16),
-            // SizedBox(
-            //   width: 131,
-            //   height: 203,
-            //   child: CachedNetworkImage(imageUrl: imageUrl),
-            // )
+            SizedBox(
+              width: 131,
+              height: 203,
+              child: CachedNetworkImage(imageUrl: imageUrl),
+            )
           ],
         )
       ],
